@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FocusBoard</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <nav class="sidebar">
+            <h2 class="logo">FocusBoard</h2>
+            <button id="darkModeToggle" class="dark-btn">Dark Mode</button>
+            <button class="nav-btn-active" data-section="dashboard">Dashboard</button>
+            <button class="nav-btn" data-section="tasks">Tasks</button>
+            <button class="nav-btn" data-section="analytics">Analytics</button>
+        </nav>
+        <main class="content">
+            <form>
+            <section id="dashboard" class="section active">
+                <h1>Dashboard</h1>
+                <div class="stats-grid">
+                    <div class="card">
+                        <h3>Total Tasks</h3>
+                        <p id="totalTasks">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Completed Tasks</h3>
+                        <p id="completedTasks">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Completion Rate</h3>
+                        <p id="completionRate">0%</p>
+                    </div>
+                </div>
+            </section>
+            <section id="tasks" class="section">
+                <h1>Tasks</h1>
+                <div class="task-input">
+                    <input type="text" id="taskTitle" placeholder="Task title">
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button id="addTaskBtn" type="button">Add Task</button>
+                </div>
+                <ul id="taskList"></ul>
+            </section>
+            <section id="analytics" class="section">
+                <h1>Analytics</h1>
+                <div id="analyticsContainer"></div>
+            </section>
+            </form>
+        </main>
+        <script src="js/script.js"></script>
+    </body>
+</html>

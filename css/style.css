@@ -1,0 +1,313 @@
+
+/* Reset */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: #f4f6fb;
+    color: #1f2937;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width: 240px;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #4f46e5;
+}
+
+.dark-btn{
+    display: block;
+    width: 100%;padding: 10px 0;
+    margin: 15px 0;
+    background-color: #00d4ff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dark-btn:hover{
+    background-color: #00b8e0;
+}
+
+.nav-btn{
+    background: transparent;
+    border: none;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    transition: all 0.25s ease;
+    color: #374151;
+}
+
+.nav-btn:hover{
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.nav-btn-active{
+    background: transparent;
+    color: #374151;
+    border: none;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    transition: all 0.25s ease;
+}
+
+.nav-btn-active:hover{
+    background-color: #eef2ff;
+    color: #4f46e5;
+}
+
+/* Main Content */
+
+.content{
+    flex: 1;
+    padding: 40px;
+}
+
+.section{
+    display: none;
+}
+
+.section.active{
+    display: block;
+}
+
+h1{
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* Cards */
+
+.stats-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card{
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card h3{
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.card p{
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* TASK INPUT */
+
+.task-input{
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.task-input input{
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.task-input select{
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.task-input input:focus,
+.task-input select:focus{
+    border-color: #4f46ef;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+#addTaskBtn {
+    background: #4f46ef;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#addTaskBtn:hover {
+    background: #4338ca;
+}
+
+/* TASK LIST */
+
+#taskList{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#taskList li{
+    background: #ffffff;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#analyticsContainer{
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Dark Mode Styles */
+.dark-mode{
+    background-color: #0d0d0d;
+    color: #00f0f0;
+}
+
+.dark-mode .sidebar{
+    background-color: #050505;
+}
+
+.dark-mode .card,
+.dark-mode #analyticsContainer,
+.dark-mode #taskList li {
+    background-color: #1a1a1a;
+    border: 1px solid #00f0f0;
+    color: #00f0f0;
+}
+
+.dark-mode #totalTasks,
+.dark-mode #completedTasks,
+.dark-mode #completionRate{
+    color: #00ffff;
+}
+
+.dark-mode .sidebar .nav-btn,
+.dark-mode .sidebar .nav-btn-active{
+    color: #00f0f0;
+    background-color: transparent;
+    border: 1px solid #00f0f0;
+}
+
+.dark-mode .task-input input,
+.dark-mode .task-input select,
+.dark-mode .task-input button{
+    background-color: #222222;
+    color: #00f0f0;
+    border: 1px solid #00f0f0;
+}
+
+.dark-mode .content{
+    background-color: #111111;
+}
+
+.dark-mode .card{
+    background-color: #1a1a1a;
+    border: 1px solid #00f0f0;
+}
+
+.dark-mode .card p,
+.dark-mode .card h3{
+    color: #00f0f0;
+}
+
+.dark-mode button:hover{
+    background-color: #00f0f0;
+    color: #0d0d0d;
+}
+
+.task-completed span{
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+#taskList li span{
+    cursor: pointer;
+}
+
+
+#taskList .delete-task{
+    background-color: #ff4d4f;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#taskList .delete-task:hover{
+    background-color: #d9363e;
+    transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#taskList li{
+    animation: fadeInUp 0.3s ease forwards;
+}
