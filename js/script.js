@@ -1,5 +1,7 @@
 
+console.log("analytics working");
 // NAV SYSTEM
+
 
 const navButtons = document.querySelectorAll('.nav-btn, .nav-btn-active');
 const sections = document.querySelectorAll('.section');
@@ -15,7 +17,7 @@ navButtons.forEach(button => {
             if (section.id === target) section.classList.add('active');
         });
     });
-
+});
     // DARK MODE TOGGLE
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
@@ -41,12 +43,41 @@ navButtons.forEach(button => {
     // Update analytics
     function updateAnalytics() {
         const total = tasks.length;
-        const completed = tasks.filter(t => t.completed).length;
+        const completed = tasks.filter(task => task.completed).length;
         const rate = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+        document.getElementById("totalTasks").textContent = total;
+        document.getElementById("completedTasks").textContent = completed;
+        document.getElementById("completionRate").textContent = rate + "%";
 
         totalTasksDisplay.textContent = total;
         completedTasksDisplay.textContent = completed;
         completionRateDisplay.textContent = `${rate}%`;
+    }
+
+    const analyticsContainer = document.getElementById("analyticsContainer");
+    
+    function renderAnalytics() {
+        const total = tasks.length;
+        const completed = tasks.filter(task => task.completed).length;
+        const pending = total - completed;
+
+        analyticsContainer.innerHTML = `
+        <div class="card">
+            <h3> Total Tasks</h3>
+            <p>${total}</p>
+        </div>
+        
+        <div class="card">
+            <h3>Completed Tasks</h3>
+            <p>${completed}</p>
+        </div>
+        
+        <div class="card">
+            <h3>Pending Tasks</h3>
+            <p>${pending}</p>
+        </div>
+        `;
     }
 
     // RENDER TASKS in the DOM
@@ -60,7 +91,6 @@ navButtons.forEach(button => {
                 <span>${t.title} - <em>${t.priority}</em></span>
                 <button class="delete-task">Delete</button>
             `;
-            taskList.appendChild(li);
 
             if(t.completed) li.classList.add("task-completed");
 
@@ -78,6 +108,7 @@ navButtons.forEach(button => {
 
             taskList.appendChild(li);
         });
+        updateAnalytics();
     }
 
     // Save tasks to local storage and refresh DOM
@@ -86,6 +117,7 @@ navButtons.forEach(button => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
         renderTasks();
         updateAnalytics();
+        renderAnalytics();
     }
 
     // Add new task
@@ -104,5 +136,6 @@ navButtons.forEach(button => {
 
     renderTasks();
     updateAnalytics();
+    renderAnalytics();
     console.log('Script loaded successfully');
-});
+
